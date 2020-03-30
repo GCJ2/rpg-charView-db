@@ -1,0 +1,29 @@
+{
+  "name": "rpg-charView-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GCJ2/rpg-charView-db.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GCJ2/rpg-charView-db/issues"
+  },
+  "homepage": "https://github.com/GCJ2/rpg-charView-db#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "3": "^2.1.0",
+    "express": "^4.17.1",
+    "knex": "^0.20.13",
+    "sqlite": "^3.0.6"
+  }
+}
