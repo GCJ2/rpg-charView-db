@@ -9,10 +9,11 @@ router.post('/register', (req, res) => {
   if (!(username && password)){
     return res.status(400).json({message: 'Username and Password are required'})
   }
-  credentials.password = bcrypt.hashSync(credentials.password, 12);
+  hash = bcrypt.hashSync(credentials.password, 12);
+  credentials.password = hash;
 
   Users.add(credentials)
-    .then(user => {
+    .then((user) => {
       res.status(200).json(user)
     })
     .catch(error => {
@@ -32,6 +33,10 @@ router.post('/login', (req, res) => {
   Users.findByUserName(username)
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
+        req.session.user = {
+          id: user.id,
+          username: username
+        };
         res.status(200).json({message: `Welcome back ${username}`})
       } else {
         res.status(401).json({message: 'Invalid credentials '})

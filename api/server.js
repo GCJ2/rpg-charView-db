@@ -8,6 +8,7 @@ const helmet = require('helmet'); // security on return headers
 const cors = require('cors'); // cross origin resource sharing
 const server = express();
 const logger = require('../logger');
+const restricted = require('../auth/restricted-middleware');
 server.use(helmet());
 server.use(express.json());
 
@@ -26,24 +27,15 @@ const sessionConfig = {
 server.use(session(sessionConfig));
 server.use(cors());
 
-// server.use((req, res, next) => {
-//   console.log(
-//     `[${new Date().toISOString()}] ${req.method} to ${req.url} from ${req.get(
-//       'origin'
-//     )}`
-//   );
-//   next();
-// });
-
 
 server.get('/api', logger, (req, res) => {
   res.json({message: 'Working'})
 });
 
 server.use('/api/auth', logger, authRouter);
-server.use('/api/weapon', logger, weaponsRouter);
-server.use('/api/headgear', logger, headgearRouter);
-server.use('/api/user', logger, userRouter);
+server.use('/api/weapon', logger, restricted, weaponsRouter);
+server.use('/api/headgear', logger, restricted, headgearRouter);
+server.use('/api/user', logger, restricted, userRouter);
 
 server.use((req, res) => {
   res.status(404).send('Invalid endpoint.')
