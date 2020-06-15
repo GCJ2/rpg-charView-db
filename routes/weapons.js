@@ -3,7 +3,6 @@ const Weapons = require('../models/Weapons');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  console.log('get weapons')
   Weapons.find()
     .then(weapons => {
       res.status(200).json(weapons)

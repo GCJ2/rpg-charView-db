@@ -3,7 +3,7 @@ const Headgear = require('../models/HeadGear');
 const router = express.Router();
 
 
-router.get('/api/headgear', (req, res) => {
+router.get('/', (req, res) => {
   Headgear.find()
     .then(weapons => {
       res.status(200).json(weapons)
@@ -13,7 +13,7 @@ router.get('/api/headgear', (req, res) => {
     })
 });
 
-router.get('/api/headgear/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const {id} = req.params;
   Headgear.findById(id)
     .then(headgear => {
@@ -28,7 +28,7 @@ router.get('/api/headgear/:id', (req, res) => {
     })
 });
 
-router.post('/api/headgear', (req, res) => {
+router.post('/', (req, res) => {
   Headgear.add(req.body)
     .then(headgear => {
       res.status(200).json(headgear)
@@ -38,7 +38,7 @@ router.post('/api/headgear', (req, res) => {
     })
 });
 
-router.patch('/api/headgear/:id', (req, res) => {
+router.patch('/:id', (req, res) => {
   const {id} = req.params;
   const changes = req.body;
   Headgear.update(id, changes)
@@ -54,7 +54,7 @@ router.patch('/api/headgear/:id', (req, res) => {
     })
 });
 
-router.delete('/api/headgear/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const {id} = req.params;
   Headgear.remove(id)
     .then(count => {

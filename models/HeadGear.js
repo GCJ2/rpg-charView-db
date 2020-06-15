@@ -7,7 +7,8 @@ module.exports = {
   add,
   find,
   findById,
-  remove
+  remove,
+  update
 };
 
 async function add(headgear) {
