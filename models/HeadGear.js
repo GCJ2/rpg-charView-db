@@ -10,23 +10,23 @@ module.exports = {
   remove
 };
 
-async function add(weapon) {
-  const [id] = await db('weapons').insert(weapon);
+async function add(headgear) {
+  const [id] = await db('headgear').insert(headgear);
   return id;
 }
 
 function find() {
-  return db('weapons')
+  return db('headgear')
 }
 
 function findById(id) {
-  return db('weapons')
+  return db('headgear')
     .where({ id })
     .first();
 }
 
 function remove(id) {
-  return db('weapons')
+  return db('headgear')
     .where({id})
     .del();
 }

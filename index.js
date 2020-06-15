@@ -1,9 +1,12 @@
 const express = require('express');
-const Weapons = require('./models/dbHelpers');
+const Weapons = require('./models/Weapons');
+const Headgear = require('./models/HeadGear');
+const cors = require('cors');
 
 const server = express();
 
 server.use(express.json());
+server.use(cors());
 
 const PORT = 5000;
 
@@ -63,6 +66,20 @@ server.delete('/api/weapons/:id', (req, res) => {
     .catch(error => {
       res.status(500).json({message: error})
     })
+});
+
+server.get('/api/headgear', (req, res) => {
+  Headgear.find()
+    .then(weapons => {
+      res.status(200).json(weapons)
+    })
+    .catch(error => {
+      res.status(500).json({message: 'Unable to get headgear'})
+    })
+});
+
+server.use((req, res) => {
+  res.status(404).send('Invalid endpoint.')
 });
 
 server.listen(PORT, () => {
