@@ -1,6 +1,7 @@
 const express = require('express');
 const Users = require('../models/Users');
 const router = express.Router();
+const bcrypt = require('bcrypt');
 
 router.post('/register', (req, res) => {
   const credentials = req.body;
@@ -8,6 +9,8 @@ router.post('/register', (req, res) => {
   if (!(username && password)){
     return res.status(400).json({message: 'Username and Password are required'})
   }
+  credentials.password = bcrypt.hashSync(credentials.password, 12);
+
   Users.add(credentials)
     .then(user => {
       res.status(200).json(user)
