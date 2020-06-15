@@ -30,3 +30,11 @@ function remove(id) {
     .where({id})
     .del();
 }
+
+function update(id, changes) {
+  return (
+    db('headgear')
+      .where({id})
+      .update(changes, [id])
+  )
+}

@@ -53,6 +53,22 @@ server.get('/api/weapons/:id', (req, res) => {
     })
 });
 
+server.patch('/api/weapons/:id', (req, res) => {
+  const {id} = req.params;
+  const changes = req.body;
+  Weapons.update(id, changes)
+    .then(weapon => {
+      if (weapon) {
+        res.status(200).json(weapon)
+      } else {
+        res.status(404).json({message: "Record not found"})
+      }
+    })
+    .catch(error => {
+      res.status(500).json({message: error})
+    })
+});
+
 server.delete('/api/weapons/:id', (req, res) => {
   const {id} = req.params;
   Weapons.remove(id)

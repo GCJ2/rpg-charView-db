@@ -7,7 +7,8 @@ module.exports = {
   add,
   find,
   findById,
-  remove
+  remove,
+  update
 };
 
 async function add(weapon) {
@@ -29,4 +30,14 @@ function remove(id) {
   return db('weapons')
     .where({id})
     .del();
+}
+
+function update(id, changes) {
+  return (db('weapons')
+      .where({id})
+      .update(changes)
+      .then(() => {
+        return findById(id)
+      })
+  )
 }
