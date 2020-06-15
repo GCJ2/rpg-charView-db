@@ -32,9 +32,12 @@ function remove(id) {
 }
 
 function update(id, changes) {
-  return (
-    db('headgear')
+  return (db('headgear')
       .where({id})
-      .update(changes, [id])
+      .update(changes)
+      .then(() => {
+        return findById(id)
+      })
   )
 }
+
