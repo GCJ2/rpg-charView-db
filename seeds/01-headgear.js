@@ -1,3 +1,4 @@
+// Seed file to populate database for testing purposes
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries
