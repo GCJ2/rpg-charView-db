@@ -1,3 +1,11 @@
+/////////////////////////////////////////////////
+// knex migrations for SQL database            //
+// SQLite is used in this project              //
+// More information can be found here:         //
+// http://knexjs.org/                          //
+// https://www.youtube.com/watch?v=JWMf7AUzMkA //
+/////////////////////////////////////////////////
+
 
 exports.up = function(knex) {
   return knex.schema.createTable('weapons', table => {

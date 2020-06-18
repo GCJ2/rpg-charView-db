@@ -7,6 +7,6 @@ module.exports = {
     connection: {
       filename: "./data/gear.db3"
     },
-    useNullAsDefault: true
+    useNullAsDefault: true  // Unique to SQLite
   },
 };

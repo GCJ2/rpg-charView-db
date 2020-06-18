@@ -3,14 +3,14 @@ const express = require('express');
 // Import DB helpers/model
 const Users = require('../models/Users');
 
-//// Now that the server is modular, we are using router instead of server
+// Now that the server is modular, we are using router instead of server
 const router = express.Router();
 
 //////////////////////////////////////////////////////////////
 // bcrypt is a hashing package for storing hashed passwords //
 // Additional information can be found here                 //
 // https://www.npmjs.com/package/bcrypt                     //
-/////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
 
 const bcrypt = require('bcrypt');
 
