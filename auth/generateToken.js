@@ -7,7 +7,7 @@ module.exports = user => {
     username: user.username
     // more non-confidential data can be added
   };
-  const secret = 'secret';
+  const secret = process.env.JWTSECRET;
 
   const options = {
     expiresIn: '1d'

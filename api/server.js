@@ -39,6 +39,7 @@ server.use('/api/user', logger, restricted, userRouter);
 
 // server.use('/api/weapon', logger, weaponsRouter);
 // server.use('/api/headgear', logger,  headgearRouter);
+// server.use('/api/user', logger, userRouter);
 
 server.use((req, res) => {
   res.status(404).send('Invalid endpoint.')
