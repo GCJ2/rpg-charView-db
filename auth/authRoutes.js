@@ -88,6 +88,16 @@ router.get('/logout', (req, res) => {
   } else {  // If there isn't a session to destroy...
     res.status(200).json({message: 'Not logged in.'}) // Throw response
   }
+
+  ///////////////
+  // For JWT  //
+  //////////////
+
+  // The front end will delete the token from local storage and push the user back to wherever the app requires.
+  // A direct /logout endpoint is not mandatory, however, some technologies
+  // can/will use it to invalidate the token on the back end in case it is
+  // not deleted on the front end.
+
 });
 
 module.exports = router;
