@@ -3,6 +3,7 @@
     <words>
       <w>knex</w>
       <w>resave</w>
+      <w>sessionsecret</w>
     </words>
   </dictionary>
 </component>
