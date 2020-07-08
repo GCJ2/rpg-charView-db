@@ -31,6 +31,7 @@ server.use(express.json()); // Allow our server to parse JSON
 // };
 
 // server.use(session(sessionConfig));
+
 server.use(cors()); // Tell our server to use CORS (Cross Origin Resource Sharing)
 // This will allow other sources to access our server; Can be used server-wide or on particular routes
 
@@ -48,17 +49,17 @@ server.get('/api', logger, (req, res) => {
 ////////////////////////////////////////////////////
 
 server.use('/api/auth', logger, authRouter);
-server.use('/api/weapon', logger, restricted, weaponsRouter);
-server.use('/api/headgear', logger, restricted, headgearRouter);
-server.use('/api/user', logger, restricted, userRouter);
+// server.use('/api/weapon', logger, restricted, weaponsRouter);
+// server.use('/api/headgear', logger, restricted, headgearRouter);
+// server.use('/api/user', logger, restricted, userRouter);
 
 //////////////////////////////////////////////
 // Routes with no auth for testing purposes //
 /////////////////////////////////////////////
 
-// server.use('/api/weapon', logger, weaponsRouter);
-// server.use('/api/headgear', logger,  headgearRouter);
-// server.use('/api/user', logger, userRouter);
+server.use('/api/weapon', logger, weaponsRouter);
+server.use('/api/headgear', logger,  headgearRouter);
+server.use('/api/user', logger, userRouter);
 
 ////////////////////////////////////
 // Default invalid endpoint route //
